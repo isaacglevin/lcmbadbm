@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 /**
  * Primary class for global variables, main and common methods.
+ * This is the class that gets run to start the program.
  */
 public class App {
 
@@ -243,6 +244,10 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+     * This method is used to start a new benchmark if there isn't one already in progress.
+     * It starts a new DiskWorker thread, setting up its event handlers and then executes the SwingWorker.
+     */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress
