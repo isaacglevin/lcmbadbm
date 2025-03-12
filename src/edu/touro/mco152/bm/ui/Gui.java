@@ -93,6 +93,11 @@ public final class Gui {
         return chartPanel;
     }
 
+    /**
+     * Adds a <code>DiskMark</code> for a write operation to the chart
+     * 
+     * @param mark the information to update the chart with
+     */
     public static void addWriteMark(DiskMark mark) {
         wSeries.add(mark.getMarkNum(), mark.getBwMbSec());
         wAvgSeries.add(mark.getMarkNum(), mark.getCumAvg());
@@ -104,6 +109,11 @@ public final class Gui {
         System.out.println(mark.toString());
     }
 
+    /**
+     * Adds a <code>DiskMark</code> for a read operation to the chart
+     * 
+     * @param mark the information to update the chart with
+     */
     public static void addReadMark(DiskMark mark) {
         rSeries.add(mark.getMarkNum(), mark.getBwMbSec());
         rAvgSeries.add(mark.getMarkNum(), mark.getCumAvg());

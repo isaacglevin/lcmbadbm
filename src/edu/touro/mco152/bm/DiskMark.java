@@ -14,6 +14,14 @@ public class DiskMark {
     private double cumMin = 0;
     private double cumMax = 0;
     private double cumAvg = 0;
+
+    /**
+     * Creates a <code>DiskMark</code> object to track a given type of benchmark
+     * operation
+     * 
+     * @param type the type of the benchmark operation for which to track progress.
+     *             Can be read or write.
+     */
     DiskMark(MarkType type) {
         this.type = type;
     }
@@ -31,6 +39,12 @@ public class DiskMark {
         return df.format(getCumMin());
     }
 
+    /**
+     * Get the cumulative maximum of the benchmark operation formatted as a <code>String</code>. The resulting
+     * <code>String</code> is in the format <code>###.###</code>
+     * 
+     * @return the cumulative maximum as a decimal formatted <code>String</code>
+     */
     String getMaxAsString() {
         return df.format(getCumMax());
     }
