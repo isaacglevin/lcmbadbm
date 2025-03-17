@@ -20,21 +20,21 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
 /**
- * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
- * once.) Cooperates with Swing to provide and make use of interim and final progress and
+ * Run the disk benchmarking as a Swing-compliant thread. Only one of these threads can run at
+ * once. Cooperates with Swing to provide and make use of interim and final progress and
  * information, which is also recorded as needed to the persistence store, and log.
  * <p>
- * Depends on static values that describe the benchmark to be done having been set in App and Gui classes.
- * The DiskRun class is used to keep track of and persist info about each benchmark at a higher level (a run),
- * while the DiskMark class described each iteration's result, which is displayed by the UI as the benchmark run
+ * Depends on static values that describe the benchmark to be done having been set in <code>App</code> and <code>Gui</code> classes.
+ * The <code>DiskRun</code> class is used to keep track of and persist info about each benchmark at a higher level (a run),
+ * while the <code>DiskMark</code> class describes each iteration's result, which is displayed by the UI as the benchmark run
  * progresses.
  * <p>
  * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
- * startBenchmark() method (which is written in the App class, but called from MainFrame).
+ * <code>startBenchmark()</code> method (which is written in the <code>App</code> class, but called from MainFrame).
  * <p>
- * To be Swing compliant this class extends SwingWorker and declares that its final return (when
- * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
- * Swing using an instance of the DiskMark class.
+ * To be Swing compliant this class extends <code>SwingWorker</code> and declares that its final return (when
+ * <code>doInBackground()</code> is finished) is of type <code>Boolean</code>, and declares that intermediate results are communicated to
+ * Swing using an instance of the <code>DiskMark</code> class.
  */
 
 public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
