@@ -30,7 +30,7 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
  * progresses.
  * <p>
  * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
- * startBenchmark() method.
+ * startBenchmark() method (which is written in the App class, but called from MainFrame).
  * <p>
  * To be Swing compliant this class extends SwingWorker and declares that its final return (when
  * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
@@ -42,6 +42,14 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     // Record any success or failure status returned from SwingWorker (might be us or super)
     Boolean lastStatus = null;  // so far unknown
 
+    /**
+     * This is the class which does the benchmarks, writing to and reading from the disks.
+     * It also updates the GUI as necessary.
+     *
+     * @return true, if everything runs correctly; false, if an error occurs
+     * @throws IOException if an error occurs while accessing the RandomAccessFile
+     * @throws FileNotFoundException if the file to log the data can't be found
+     */
     @Override
     protected Boolean doInBackground() throws Exception {
 
@@ -304,7 +312,9 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         });
     }
 
-
+    /**
+     * This method is used to obtain the final status of the benchmark, either based on the return value of the doInBackground method or SwingWorker error.
+     */
     @Override
     protected void done() {
         // Obtain final status, might from doInBackground ret value, or SwingWorker error

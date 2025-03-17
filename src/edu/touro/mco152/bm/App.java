@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  * managing global variables, and coordinating the execution of disk benchmarking tests.
  * It provides methods for setting up and saving configuration, running benchmarks,
  * and interacting with the graphical user interface.
+ * This is the class that gets run to start the program.
  * </p>
  */
 public class App {
@@ -266,6 +267,10 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+     * This method is used to start a new benchmark if there isn't one already in progress.
+     * It starts a new DiskWorker thread, setting up its event handlers and then executes the SwingWorker.
+     */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress
