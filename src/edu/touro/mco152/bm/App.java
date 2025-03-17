@@ -16,8 +16,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * The {@code App} class serves as the main entry point for the BadBM benchmarking tool.
+ * <p>
+ * This class is responsible for initializing the application, handling configuration settings,
+ * managing global variables, and coordinating the execution of disk benchmarking tests.
+ * It provides methods for setting up and saving configuration, running benchmarks,
+ * and interacting with the graphical user interface.
  * This is the class that gets run to start the program.
+ * </p>
  */
 public class App {
 
@@ -226,6 +232,14 @@ public class App {
         });
     }
 
+    /**
+     * Deletes all previously saved benchmark run data from the database.
+     * <p>
+     * This method removes all existing disk performance records by calling
+     * {@code DiskRun.deleteAll()} and then reloads the GUI with an empty dataset.
+     * </p>
+     */
+
     public static void clearSavedRuns() {
         DiskRun.deleteAll();
 
@@ -235,6 +249,15 @@ public class App {
     public static void msg(String message) {
         Gui.mainFrame.msg(message);
     }
+
+    /**
+     * Cancels the currently running disk benchmark test, if one is active.
+     * <p>
+     * If no benchmark is in progress (i.e., {@code worker} is {@code null}),
+     * a message is displayed and no further action is taken. Otherwise,
+     * the active worker thread is instructed to cancel execution.
+     * </p>
+     */
 
     public static void cancelBenchmark() {
         if (worker == null) {
