@@ -3,8 +3,26 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * The {@code DiskMark} class represents a single measurement of disk performance
+ * during a benchmarking process.
+ * <p>
+ * Each {@code DiskMark} instance tracks performance data for a specific disk operation
+ * (either a read or write). It records:
+ * </p>
+ * <ul>
+ *     <li>The mark number (indicating the sequence of the test).</li>
+ *     <li>The measured bandwidth in megabytes per second.</li>
+ *     <li>The cumulative minimum, maximum, and average speeds.</li>
+ * </ul>
+ *
+ * <p>This class provides methods for formatting and retrieving these values,
+ * ensuring consistency in performance reporting. It is primarily used in conjunction
+ * with disk benchmarking processes.</p>
+ *
+ * @author Isaac Levin
+ * @version 1.0
  */
+
 public class DiskMark {
 
     static DecimalFormat df = new DecimalFormat("###.###");
