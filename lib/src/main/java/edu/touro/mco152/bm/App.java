@@ -77,8 +77,8 @@ public class App {
              */
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
             //</editor-fold>
         }
@@ -271,7 +271,7 @@ public class App {
      * This method is used to start a new benchmark if there isn't one already in progress.
      * It starts a new DiskWorker thread, setting up its event handlers and then executes the SwingWorker.
      */
-    public static void startBenchmark() {
+    public static void startBenchmark() throws Exception {
 
         //1. check that there isn't already a worker in progress
         if (state == State.DISK_TEST_STATE) {
@@ -291,7 +291,7 @@ public class App {
         Gui.mainFrame.adjustSensitivity();
 
         //4. set up disk worker thread and its event handlers
-        worker = new DiskWorker();
+        worker = new DiskWorker(new SwingWorkerUI());
         worker.addPropertyChangeListener((final PropertyChangeEvent event) -> {
             switch (event.getPropertyName()) {
                 case "progress":
