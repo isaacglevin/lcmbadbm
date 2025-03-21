@@ -120,11 +120,5 @@ public class BadBMTests implements BenchmarkUI {
                         independently by doing a cold reboot after the WRITE""");
 
     }
-
-
-
-//    He wants you to put some test in the Test class that a) checks if
-//    the values passed to publish are valid -- between 1 and 100, and b)
-//    that it got called at least once (so you'd have some false variable
-//    that you change to true in that method and then assertTrue in the test method (after you call execute)
+    //
 }

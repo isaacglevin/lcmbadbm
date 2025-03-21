@@ -19,4 +19,5 @@ public interface BenchmarkUI {
     void start() throws Exception;
 
     void showMessage();
+    //
 }

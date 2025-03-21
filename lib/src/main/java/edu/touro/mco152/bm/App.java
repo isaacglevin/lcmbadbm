@@ -419,4 +419,5 @@ public class App {
     }
 
     public enum State {IDLE_STATE, DISK_TEST_STATE}
+    //
 }
