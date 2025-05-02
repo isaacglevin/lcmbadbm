@@ -40,7 +40,7 @@ public class DiskMark {
      * @param type the type of the benchmark operation for which to track progress.
      *             Can be read or write.
      */
-    DiskMark(MarkType type) {
+    public DiskMark(MarkType type) {
         this.type = type;
     }
 
@@ -49,7 +49,7 @@ public class DiskMark {
         return "Mark(" + type + "): " + getMarkNum() + " bwMbSec: " + getBwMbSecAsString() + " avg: " + getAvgAsString();
     }
 
-    String getBwMbSecAsString() {
+    public String getBwMbSecAsString() {
         return df.format(getBwMbSec());
     }
 
