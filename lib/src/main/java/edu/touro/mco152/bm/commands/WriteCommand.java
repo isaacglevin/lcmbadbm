@@ -59,7 +59,7 @@ public class WriteCommand implements Command {
      */
 
     @Override
-    public void execute() {
+    public DiskRun execute() {
         DiskRun run = new DiskRun(DiskRun.IOMode.WRITE, blockSequence);
         run.setNumMarks(numMarks);
         run.setNumBlocks(numBlocks);
@@ -135,14 +135,9 @@ public class WriteCommand implements Command {
             run.setEndTime(new Date());
         }
 
-        EntityManager em = EM.getEntityManager();
-        em.getTransaction().begin();
-        em.persist(run);
-        em.getTransaction().commit();
-
-        if (Gui.runPanel != null) {
-            Gui.runPanel.addRun(run);
-        }
+        run.setEndTime(new Date());
+        SimpleExecutor.getInstance().notifyObservers(run);
+        return run;
 
     }
 }

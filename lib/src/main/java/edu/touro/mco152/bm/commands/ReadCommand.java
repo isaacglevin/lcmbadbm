@@ -63,7 +63,7 @@ public class ReadCommand implements Command {
      * tracks performance, updates the UI, and persists results.
      */
     @Override
-    public void execute() {
+    public DiskRun execute() {
         DiskRun run = new DiskRun(DiskRun.IOMode.READ, blockSequence);
         run.setNumMarks(numMarks);
         run.setNumBlocks(numBlocks);
@@ -111,7 +111,7 @@ public class ReadCommand implements Command {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Unable to read: file not found. Did you run a write test first?");
-                return;
+                return null;
             } catch (IOException ex) {
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -131,14 +131,9 @@ public class ReadCommand implements Command {
             run.setEndTime(new Date());
         }
 
-        EntityManager em = EM.getEntityManager();
-        em.getTransaction().begin();
-        em.persist(run);
-        em.getTransaction().commit();
-
-        if (Gui.runPanel != null) {
-            Gui.runPanel.addRun(run);
-        }
+        run.setEndTime(new Date());
+        SimpleExecutor.getInstance().notifyObservers(run);
+        return run;
 
     }
 }

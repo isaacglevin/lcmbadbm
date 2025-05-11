@@ -106,6 +106,11 @@ public class DiskWorker {
          * allows the command to be executed by a simple executor.
          */
 
+        SimpleExecutor executor = SimpleExecutor.getInstance();
+        executor.registerObserver(new edu.touro.mco152.bm.persist.DatabaseObserver());
+        executor.registerObserver(new edu.touro.mco152.bm.ui.GuiRunPanelObserver());
+        executor.registerObserver(new edu.touro.mco152.bm.externalsys.SlackObserver());
+
 
         if (App.writeTest) {
             Command writeCommand = new WriteCommand(
@@ -119,7 +124,7 @@ public class DiskWorker {
                     App.dataDir,
                     App.nextMarkNumber
             );
-            new SimpleExecutor().executeCommand(writeCommand);
+            executor.executeCommand(writeCommand);
         }
 
 
@@ -153,7 +158,7 @@ public class DiskWorker {
                     App.dataDir,
                     App.nextMarkNumber
             );
-            new SimpleExecutor().executeCommand(readCommand);
+            executor.executeCommand(readCommand);
         }
 
         App.nextMarkNumber += App.numOfMarks;

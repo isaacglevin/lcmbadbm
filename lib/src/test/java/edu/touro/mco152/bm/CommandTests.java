@@ -37,7 +37,7 @@ public class CommandTests {
                 SEQ, ui, true, true, TEST_DIR, 1
         );
 
-        new SimpleExecutor().executeCommand(write);
+        SimpleExecutor.getInstance();
 
         assertTrue(ui.wasProgressSet());
         assertTrue(ui.wasPublishCalled());
@@ -57,7 +57,7 @@ public class CommandTests {
                 SEQ, ui, true, TEST_DIR, 1
         );
 
-        new SimpleExecutor().executeCommand(read);
+        SimpleExecutor.getInstance();
 
         assertTrue(ui.wasProgressSet());
         assertTrue(ui.wasPublishCalled());

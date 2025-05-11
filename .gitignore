@@ -32,3 +32,8 @@ jdm.properties
 
 # Ignore Gradle build output directory
 build
+
+slacktoken.txt
+*.txt
+/tmp/
+

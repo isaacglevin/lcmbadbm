@@ -1,5 +1,6 @@
 package edu.touro.mco152.bm;
 
+import edu.touro.mco152.bm.commands.SimpleExecutor;
 import edu.touro.mco152.bm.persist.DiskRun;
 import edu.touro.mco152.bm.ui.Gui;
 import edu.touro.mco152.bm.ui.MainFrame;
@@ -419,5 +420,15 @@ public class App {
     }
 
     public enum State {IDLE_STATE, DISK_TEST_STATE}
-    //
+
+    public static SimpleExecutor buildExecutorWithObservers() {
+        SimpleExecutor executor = SimpleExecutor.getInstance();
+
+        executor.registerObserver(new edu.touro.mco152.bm.persist.DatabaseObserver());
+        executor.registerObserver(new edu.touro.mco152.bm.ui.GuiRunPanelObserver());
+        executor.registerObserver(new edu.touro.mco152.bm.externalsys.SlackObserver());
+
+        return executor;
+    }
+
 }

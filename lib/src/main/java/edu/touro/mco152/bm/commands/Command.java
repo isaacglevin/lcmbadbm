@@ -1,12 +1,16 @@
 package edu.touro.mco152.bm.commands;
 
-/**
- * The Command interface which represents an executable benchmark task.
- * Any class that implements this interface can encapsulate a specific operation
- * and follow the Command Pattern.
- */
+import edu.touro.mco152.bm.persist.DiskRun;
 
+/**
+ * The Command interface represents an executable benchmark task that returns a result.
+ */
 public interface Command {
 
-    void execute();
+    /**
+     * Executes the benchmark and returns a DiskRun result.
+     *
+     * @return the completed DiskRun
+     */
+    DiskRun execute();
 }
