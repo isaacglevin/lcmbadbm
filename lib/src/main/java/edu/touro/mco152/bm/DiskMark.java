@@ -36,7 +36,7 @@ public class DiskMark {
     /**
      * Creates a <code>DiskMark</code> object to track a given type of benchmark
      * operation
-     * 
+     *
      * @param type the type of the benchmark operation for which to track progress.
      *             Can be read or write.
      */
@@ -49,6 +49,11 @@ public class DiskMark {
         return "Mark(" + type + "): " + getMarkNum() + " bwMbSec: " + getBwMbSecAsString() + " avg: " + getAvgAsString();
     }
 
+    /**
+     * Get the bandwidth in MB/sec as a formatted String.
+     *
+     * @return formatted bandwidth string
+     */
     public String getBwMbSecAsString() {
         return df.format(getBwMbSec());
     }
@@ -60,7 +65,7 @@ public class DiskMark {
     /**
      * Get the cumulative maximum of the benchmark operation formatted as a <code>String</code>. The resulting
      * <code>String</code> is in the format <code>###.###</code>
-     * 
+     *
      * @return the cumulative maximum as a decimal formatted <code>String</code>
      */
     String getMaxAsString() {

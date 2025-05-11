@@ -14,7 +14,7 @@ dependencies {
 
     // Use JUnit Jupiter for testing.
     testImplementation platform('org.junit:junit-bom:5.12.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
@@ -64,4 +64,8 @@ jar {
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     archiveBaseName = 'badbm'
+}
+
+test {
+    useJUnitPlatform()
 }

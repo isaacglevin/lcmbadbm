@@ -848,5 +848,5 @@ public final class MainFrame extends JFrame {
             resetButton.setEnabled(true);
         }
     }
-
+//
 }
